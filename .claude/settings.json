@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:ativainclusao.com.br)",
+      "WebFetch(domain:parquegirassol.com)",
+      "WebFetch(domain:institutoama.com)"
+    ]
+  }
+}

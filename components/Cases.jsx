@@ -1,46 +1,52 @@
 'use client';
 import { useEffect, useRef } from 'react';
-import { TrendingDown, TrendingUp, Clock, ArrowUpRight } from 'lucide-react';
+import {
+  Stethoscope,
+  Briefcase,
+  ShoppingBag,
+  GraduationCap,
+  Building2,
+  Scale,
+  AlertCircle,
+  CheckCircle2,
+} from 'lucide-react';
 
-const cases = [
+const sectors = [
   {
-    sector: 'Clínica Médica',
-    title: 'Atendimento automatizado e agenda integrada',
-    challenge:
-      'A equipe perdia horas diárias com confirmação manual de consultas por WhatsApp, resultando em faltas e retrabalho.',
-    solution:
-      'Chatbot de agendamento, confirmação automática 24h antes e triagem inicial — integrado ao sistema de gestão.',
-    metrics: [
-      { icon: TrendingDown, value: '-40%', label: 'tempo operacional da recepção' },
-      { icon: Clock, value: '-60%', label: 'taxa de faltas nas consultas' },
-      { icon: TrendingUp, value: '+18%', label: 'capacidade de atendimento' },
-    ],
+    icon: Stethoscope,
+    name: 'Clínicas & Saúde',
+    problems: ['Agendamentos manuais e faltas sem aviso', 'Recepção sobrecarregada com tarefas repetitivas', 'Histórico de pacientes descentralizado'],
+    automations: ['Chatbot de agendamento 24/7', 'Confirmação automática de consultas', 'CRM e histórico integrados'],
   },
   {
-    sector: 'Empresa de Serviços',
-    title: 'Funil comercial automatizado do zero',
-    challenge:
-      'Leads chegavam por múltiplos canais mas sem processo de follow-up — a maioria esfriava sem resposta adequada.',
-    solution:
-      'Centralização de leads, automação de nutrição por estágio e propostas geradas automaticamente após qualificação.',
-    metrics: [
-      { icon: TrendingUp, value: '+25%', label: 'taxa de conversão de leads' },
-      { icon: Clock, value: '-70%', label: 'tempo para enviar proposta' },
-      { icon: TrendingDown, value: '-35%', label: 'custo por aquisição' },
-    ],
+    icon: Briefcase,
+    name: 'Empresas de Serviços',
+    problems: ['Leads esfriando por falta de follow-up', 'Propostas demoradas e inconsistentes', 'Funil comercial sem visibilidade'],
+    automations: ['Nutrição automática por estágio', 'Propostas geradas automaticamente', 'Pipeline atualizado em tempo real'],
   },
   {
-    sector: 'E-commerce / Varejo',
-    title: 'Integração e cobrança automática',
-    challenge:
-      'Pedidos no e-commerce não sincronizavam com estoque e ERP, gerando erros manuais e inadimplência fora de controle.',
-    solution:
-      'Integrações via API entre plataformas, régua de cobrança automática e relatórios financeiros diários no email.',
-    metrics: [
-      { icon: TrendingDown, value: '-85%', label: 'erros de sincronização de estoque' },
-      { icon: TrendingDown, value: '-30%', label: 'inadimplência mensal' },
-      { icon: Clock, value: '4h/dia', label: 'economizadas em tarefas manuais' },
-    ],
+    icon: ShoppingBag,
+    name: 'E-commerce & Varejo',
+    problems: ['Estoque desatualizado entre plataformas', 'Inadimplência e cobranças manuais', 'Atendimento lento no pós-venda'],
+    automations: ['Integração com ERP e plataformas', 'Régua de cobrança automática', 'Atendimento via chatbot 24/7'],
+  },
+  {
+    icon: GraduationCap,
+    name: 'Educação & Cursos',
+    problems: ['Matrículas e renovações manuais', 'Alunos sem suporte ágil', 'Comunicação descentralizada com turmas'],
+    automations: ['Fluxo de matrícula automático', 'Suporte e FAQ via chatbot', 'Notificações e lembretes automáticos'],
+  },
+  {
+    icon: Building2,
+    name: 'Imobiliárias',
+    problems: ['Leads sem qualificação chegando ao corretor', 'Agendamento de visitas descoordenado', 'Contratos e propostas manuais'],
+    automations: ['Qualificação automática de leads', 'Agendamento de visitas integrado', 'Propostas e contratos digitais'],
+  },
+  {
+    icon: Scale,
+    name: 'Jurídico & Advocacia',
+    problems: ['Gestão de prazos feita manualmente', 'Clientes sem atualização do andamento', 'Onboarding de novos clientes lento'],
+    automations: ['Alertas automáticos de prazo', 'Updates automáticos para clientes', 'Onboarding digital padronizado'],
   },
 ];
 
@@ -65,7 +71,7 @@ export default function Cases() {
 
   return (
     <section
-      id="cases"
+      id="setores"
       ref={sectionRef}
       className="py-24 px-6 bg-grid"
       style={{ background: '#0B0B0D' }}
@@ -81,13 +87,13 @@ export default function Cases() {
               color: '#FD4E0C',
             }}
           >
-            Cases & Resultados
+            Setores que atendemos
           </div>
           <h2
             className="reveal delay-1 text-3xl md:text-4xl lg:text-5xl font-black mb-5"
             style={{ color: '#F4F4F5', letterSpacing: '-0.02em' }}
           >
-            Resultados que{' '}
+            Seu setor tem{' '}
             <span
               style={{
                 background: 'linear-gradient(90deg, #FD4E0C, #ff7a45)',
@@ -95,122 +101,97 @@ export default function Cases() {
                 WebkitTextFillColor: 'transparent',
               }}
             >
-              falam por si
+              solução aqui
             </span>
           </h2>
           <p
             className="reveal delay-2 text-lg max-w-2xl mx-auto"
             style={{ color: '#71717A' }}
           >
-            Empresas que pararam de operar no modo manual e passaram a escalar com automação inteligente.
+            Cada segmento tem suas próprias dores. Nós conhecemos elas — e sabemos exatamente o que automatizar.
           </p>
         </div>
 
-        {/* Cases grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {cases.map((c, i) => (
-            <div
-              key={c.title}
-              className={`reveal delay-${i + 1} card-shine group flex flex-col p-6 rounded-2xl transition-all duration-300`}
-              style={{
-                background: '#141418',
-                border: '1px solid rgba(255,255,255,0.06)',
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.borderColor = 'rgba(253,78,12,0.3)';
-                e.currentTarget.style.boxShadow = '0 8px 40px rgba(253,78,12,0.08)';
-                e.currentTarget.style.transform = 'translateY(-4px)';
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)';
-                e.currentTarget.style.boxShadow = 'none';
-                e.currentTarget.style.transform = 'translateY(0)';
-              }}
-            >
-              {/* Sector badge */}
-              <div className="flex items-center justify-between mb-5">
-                <span
-                  className="text-xs font-semibold px-2.5 py-1 rounded-full"
-                  style={{
-                    background: 'rgba(253,78,12,0.08)',
-                    border: '1px solid rgba(253,78,12,0.15)',
-                    color: '#FD4E0C',
-                  }}
-                >
-                  {c.sector}
-                </span>
-                <ArrowUpRight size={16} style={{ color: '#52525B' }} className="group-hover:text-orange-500 transition-colors" />
-              </div>
-
-              {/* Title */}
-              <h3
-                className="text-lg font-bold mb-4"
-                style={{ color: '#F4F4F5' }}
+        {/* Sectors grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {sectors.map((sector, i) => {
+            const Icon = sector.icon;
+            return (
+              <div
+                key={sector.name}
+                className={`reveal delay-${(i % 6) + 1} card-shine group flex flex-col p-6 rounded-2xl transition-all duration-300 cursor-default`}
+                style={{
+                  background: '#141418',
+                  border: '1px solid rgba(255,255,255,0.06)',
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.borderColor = 'rgba(253,78,12,0.3)';
+                  e.currentTarget.style.boxShadow = '0 8px 40px rgba(253,78,12,0.08)';
+                  e.currentTarget.style.transform = 'translateY(-4px)';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)';
+                  e.currentTarget.style.boxShadow = 'none';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
               >
-                {c.title}
-              </h3>
+                {/* Icon + name */}
+                <div className="flex items-center gap-3 mb-5">
+                  <div
+                    className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(253,78,12,0.15), rgba(253,78,12,0.05))',
+                      border: '1px solid rgba(253,78,12,0.2)',
+                    }}
+                  >
+                    <Icon size={20} style={{ color: '#FD4E0C' }} />
+                  </div>
+                  <h3 className="text-base font-bold" style={{ color: '#F4F4F5' }}>
+                    {sector.name}
+                  </h3>
+                </div>
 
-              {/* Challenge + Solution */}
-              <div className="space-y-4 mb-6">
-                <div>
+                {/* Problems */}
+                <div className="mb-4">
                   <span
                     className="text-xs font-semibold uppercase tracking-widest"
                     style={{ color: '#52525B' }}
                   >
-                    Desafio
+                    Dores comuns
                   </span>
-                  <p className="text-sm leading-relaxed mt-1" style={{ color: '#71717A' }}>
-                    {c.challenge}
-                  </p>
+                  <ul className="mt-2 space-y-1.5">
+                    {sector.problems.map((p) => (
+                      <li key={p} className="flex items-start gap-2 text-sm" style={{ color: '#71717A' }}>
+                        <AlertCircle size={13} className="flex-shrink-0 mt-0.5" style={{ color: '#52525B' }} />
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <div>
+
+                {/* Divider */}
+                <div className="my-4" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }} />
+
+                {/* Automations */}
+                <div className="mt-auto">
                   <span
                     className="text-xs font-semibold uppercase tracking-widest"
                     style={{ color: '#FD4E0C' }}
                   >
-                    Solução
+                    O que automatizamos
                   </span>
-                  <p className="text-sm leading-relaxed mt-1" style={{ color: '#A1A1AA' }}>
-                    {c.solution}
-                  </p>
+                  <ul className="mt-2 space-y-1.5">
+                    {sector.automations.map((a) => (
+                      <li key={a} className="flex items-start gap-2 text-sm" style={{ color: '#A1A1AA' }}>
+                        <CheckCircle2 size={13} className="flex-shrink-0 mt-0.5" style={{ color: '#22C55E' }} />
+                        {a}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
-
-              {/* Metrics */}
-              <div
-                className="mt-auto pt-5 space-y-3"
-                style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
-              >
-                {c.metrics.map((m) => {
-                  const Icon = m.icon;
-                  return (
-                    <div key={m.label} className="flex items-center gap-3">
-                      <div
-                        className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
-                        style={{ background: 'rgba(253,78,12,0.1)' }}
-                      >
-                        <Icon size={14} style={{ color: '#FD4E0C' }} />
-                      </div>
-                      <div>
-                        <span
-                          className="text-lg font-black"
-                          style={{ color: '#FD4E0C' }}
-                        >
-                          {m.value}
-                        </span>
-                        <span
-                          className="text-xs ml-1.5"
-                          style={{ color: '#71717A' }}
-                        >
-                          {m.label}
-                        </span>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

@@ -26,7 +26,8 @@ const quickLinks = [
   { label: 'Soluções', href: '#solucoes', type: 'scroll' },
   { label: 'Serviços', href: '#servicos', type: 'scroll' },
   { label: 'Como Funciona', href: '#como-funciona', type: 'scroll' },
-  { label: 'Cases', href: '#cases', type: 'scroll' },
+  { label: 'Setores', href: '#setores', type: 'scroll' },
+  { label: 'Projetos', href: '#projetos', type: 'scroll' },
   { label: 'Conteúdos', href: '#conteudos', type: 'scroll' },
   { label: 'Contato', href: '#contato', type: 'scroll' },
 ];

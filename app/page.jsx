@@ -4,6 +4,7 @@ import Solutions from '@/components/Solutions';
 import Services from '@/components/Services';
 import Process from '@/components/Process';
 import Cases from '@/components/Cases';
+import Projects from '@/components/Projects';
 import BlogPreview from '@/components/BlogPreview';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
@@ -21,6 +22,7 @@ export default function Home() {
         <Services />
         <Process />
         <Cases />
+        <Projects />
         <BlogPreview posts={posts} />
         <Contact />
       </main>
